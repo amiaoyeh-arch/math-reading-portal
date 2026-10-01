@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>國小數學「讀題三部曲」—— 全學段互動導學門戶 (三、四、五、六年級)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #0F172A;
+      --card-bg: rgba(30, 41, 59, 0.85);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #F8FAFC;
+      --text-sub: #94A3B8;
+      
+      --g3-color: #38BDF8;
+      --g4-color: #34D399;
+      --g5-color: #FBBF24;
+      --g6-color: #F472B6;
+
+      --bg-context: #DCFCE7;
+      --bg-cond: #FEF08A;
+      --bg-core: #FFE4E6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Noto Sans TC', 'Zen Maru Gothic', sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1E293B 0%, #0F172A 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60A5FA;
+      padding: 6px 18px;
+      border-radius: 20px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-sub);
+      max-width: 750px;
+      margin: 0 auto 30px;
+    }
+
+    /* Concept Triangle */
+    .method-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 1100px;
+      margin: 0 auto 50px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .method-title {
+      text-align: center;
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #E2E8F0;
+      margin-bottom: 24px;
+    }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .m-item {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 16px;
+      padding: 20px;
+      border-left: 6px solid;
+    }
+    .m-item.ctx { border-color: #22C55E; }
+    .m-item.cnd { border-color: #EAB308; }
+    .m-item.cor { border-color: #F43F5E; }
+
+    .m-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .m-item.ctx .m-header { color: #86EFAC; }
+    .m-item.cnd .m-header { color: #FDE047; }
+    .m-item.cor .m-header { color: #FDA4AF; }
+
+    .m-desc {
+      font-size: 0.92rem;
+      color: #94A3B8;
+      line-height: 1.6;
+    }
+
+    /* Grade Cards Section */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+      width: 100%;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 25px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .grade-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 24px;
+    }
+
+    .grade-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .grade-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+    }
+    .card-g3::before { background: var(--g3-color); }
+    .card-g4::before { background: var(--g4-color); }
+    .card-g5::before { background: var(--g5-color); }
+    .card-g6::before { background: var(--g6-color); }
+
+    .grade-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .card-top {
+      margin-bottom: 20px;
+    }
+
+    .grade-tag {
+      display: inline-block;
+      font-size: 0.85rem;
+      font-weight: 900;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .card-g3 .grade-tag { background: rgba(56, 189, 248, 0.15); color: var(--g3-color); }
+    .card-g4 .grade-tag { background: rgba(52, 211, 153, 0.15); color: var(--g4-color); }
+    .card-g5 .grade-tag { background: rgba(251, 191, 36, 0.15); color: var(--g5-color); }
+    .card-g6 .grade-tag { background: rgba(244, 114, 182, 0.15); color: var(--g6-color); }
+
+    .card-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.95rem;
+      color: var(--text-sub);
+      line-height: 1.6;
+    }
+
+    .card-stats {
+      display: flex;
+      gap: 12px;
+      margin: 18px 0;
+      padding: 10px 0;
+      border-top: 1px dashed rgba(255, 255, 255, 0.1);
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+      font-size: 0.85rem;
+      color: #CBD5E1;
+    }
+
+    .card-btn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 800;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .card-g3 .card-btn { background: var(--g3-color); color: #0F172A; }
+    .card-g4 .card-btn { background: var(--g4-color); color: #0F172A; }
+    .card-g5 .card-btn { background: var(--g5-color); color: #0F172A; }
+    .card-g6 .card-btn { background: var(--g6-color); color: #0F172A; }
+
+    .grade-card:hover .card-btn {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: auto;
+      background: rgba(15, 23, 42, 0.95);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-sub);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .method-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-badge">📐 108 課綱數學素養 · 智慧讀題鷹架系統</div>
+    <h1>國小數學「讀題三部曲」導學門戶</h1>
+    <p>透過【背景語句 🌿】、【條件語句 🌟】與【核心問題 🎯】三色透視拆解，引導三至六年級學生化繁為簡，破除長題迷思！</p>
+  </div>
+
+  <div class="method-card">
+    <div class="method-title">💡 數學題意三要素透視心法</div>
+    <div class="method-grid">
+      <div class="m-item ctx">
+        <div class="m-header">🌿 1. 背景語句 (Context)</div>
+        <div class="m-desc">提供事件情境、人物角色、生活前因後果。幫助學生快速融入問題情境，縮小理解範圍。</div>
+      </div>
+      <div class="m-item cnd">
+        <div class="m-header">🌟 2. 條件語句 (Conditions)</div>
+        <div class="m-desc">包含已知數值、限制規則、倍數關係、增減變化等。是<b>解題列式最核心的算式骨幹</b>！</div>
+      </div>
+      <div class="m-item cor">
+        <div class="m-header">🎯 3. 核心問題 (Core Question)</div>
+        <div class="m-desc">明確指出題目「要算什麼」、要回答的最終任務。決定計算的出口與思考方向。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section-header">
+      <div class="section-title">🏫 選擇年級進入讀題練習簡報</div>
+      <div style="font-size:0.95rem; color:var(--text-sub);">支援全螢幕投影 · 盲讀/透視一鍵切換 · 原卷大圖對照</div>
+    </div>
+
+    <div class="grade-grid">
+      
+      <!-- Grade 3 -->
+      <a href="grade3.html" class="grade-card card-g3">
+        <div class="card-top">
+          <span class="grade-tag">國小三年級</span>
+          <h2 class="card-title">三年級數學科全卷</h2>
+          <p class="card-desc">收錄 115 年新北市學習能力檢測全卷 25 題，涵蓋四位數加減、除法直式、長度與容量換算、正方形與分數圖形。</p>
+        </div>
+        <div>
+          <div class="card-stats">
+            <span>📝 全卷 25 題</span>
+            <span>🎯 100% 全題精析</span>
+          </div>
+          <div class="card-btn">進入三年級練習 👉</div>
+        </div>
+      </a>
+
+      <!-- Grade 4 -->
+      <a href="grade4.html" class="grade-card card-g4">
+        <div class="card-top">
+          <span class="grade-tag">國小四年級</span>
+          <h2 class="card-title">四年級數學科全卷</h2>
+          <p class="card-desc">收錄 115 年新北市學習能力檢測全卷 25 題，涵蓋小數四則、分配律簡計算、時間倒推、幾何垂直平行、折線圖統計。</p>
+        </div>
+        <div>
+          <div class="card-stats">
+            <span>📝 全卷 25 題</span>
+            <span>🎯 100% 全題精析</span>
+          </div>
+          <div class="card-btn">進入四年級練習 👉</div>
+        </div>
+      </a>
+
+      <!-- Grade 5 -->
+      <a href="grade5.html" class="grade-card card-g5">
+        <div class="card-top">
+          <span class="grade-tag">國小五年級</span>
+          <h2 class="card-title">五年級 關係(R) 精選</h2>
+          <p class="card-desc">精選歷屆能力檢測「關係 (Relations)」領域 10 道代表題，包含外幣兌換、訂房餐費併式、分配律簡算、奇偶數卡片規律。</p>
+        </div>
+        <div>
+          <div class="card-stats">
+            <span>📝 精選 10 題</span>
+            <span>🎯 關係(R) 專題</span>
+          </div>
+          <div class="card-btn">進入五年級練習 👉</div>
+        </div>
+      </a>
+
+      <!-- Grade 6 -->
+      <a href="grade6.html" class="grade-card card-g6">
+        <div class="card-top">
+          <span class="grade-tag">國小六年級</span>
+          <h2 class="card-title">六年級 數與量(N) 精選</h2>
+          <p class="card-desc">收錄 114 年能力檢測「數與量 (N)」主題 17 題，涵蓋分數分配律、正反比、面積換算、工作率、基準量與比較量、速率單位換算。</p>
+        </div>
+        <div>
+          <div class="card-stats">
+            <span>📝 114年 17 題</span>
+            <span>🎯 數與量(N) 專題</span>
+          </div>
+          <div class="card-btn">進入六年級練習 👉</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 國小數學讀題三部曲 (三、四、五、六年級) 互動導學門戶系統  |  基於 108 課綱設計 · 歡迎教學分享與轉載</p>
+  </footer>
+
+</body>
+</html>

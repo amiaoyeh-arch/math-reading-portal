@@ -1,0 +1,10 @@
+﻿.tmp.*
+*.tmp
+extracted_questions/
+grade3_exam_pages/
+grade3_exam_crops/
+grade4_exam_crops/
+images_data.json
+g6_data.json
+gen.py
+generate_deck.py
