@@ -38,21 +38,10 @@
 
     /* Hero Section */
     .hero {
-      padding: 50px 20px 30px;
-      max-width: 1100px;
+      text-align: center;
+      padding: 60px 20px 40px;
+      max-width: 1000px;
       margin: 0 auto;
-    }
-
-    .hero-content {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
-    .hero-text {
-      flex: 1;
-      text-align: left;
     }
 
     .hero-badge {
@@ -66,26 +55,24 @@
       border-radius: 20px;
       font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .hero h1 {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 900;
       letter-spacing: -0.5px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       background: linear-gradient(135deg, #FFFFFF 0%, #CBD5E1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1.25;
     }
 
     .hero p {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-sub);
-      max-width: 700px;
-      margin: 0;
-      line-height: 1.6;
+      max-width: 750px;
+      margin: 0 auto 30px;
     }
 
     /* Concept Triangle */
@@ -270,31 +257,6 @@
       transform: scale(1.02);
     }
 
-    /* Logo Video */
-    .logo-container {
-      flex-shrink: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .logo-video {
-      width: 145px;
-      height: 145px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(96, 165, 250, 0.6);
-      box-shadow: 0 0 25px rgba(56, 189, 248, 0.35), 0 8px 20px rgba(0, 0, 0, 0.5);
-      background: #000;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .logo-video:hover {
-      transform: scale(1.06);
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.7), 0 10px 25px rgba(0, 0, 0, 0.6);
-      border-color: #60A5FA;
-    }
-
     footer {
       margin-top: auto;
       background: rgba(15, 23, 42, 0.95);
@@ -303,45 +265,20 @@
       text-align: center;
       font-size: 0.9rem;
       color: var(--text-sub);
-      line-height: 1.8;
     }
 
-    .footer-author {
-      margin-top: 6px;
-      font-size: 0.92rem;
-      color: #CBD5E1;
-      font-weight: 500;
-    }
-
-    @media (max-width: 850px) {
-      .hero-content {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 20px;
-      }
-      .hero-text { text-align: center; }
-      .hero h1 { font-size: 2.1rem; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
       .method-grid { grid-template-columns: 1fr; }
-      .logo-video { width: 120px; height: 120px; }
     }
   </style>
 </head>
 <body>
 
   <div class="hero">
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-badge">📐 108 課綱數學素養 · 智慧讀題鷹架系統</div>
-        <h1>國小數學「讀題三部曲」導學門戶</h1>
-        <p>透過【背景語句 🌿】、【條件語句 🌟】與【核心問題 🎯】三色透視拆解，引導三至六年級學生化繁為簡，破除長題迷思！</p>
-      </div>
-      <div class="logo-container">
-        <video class="logo-video" autoplay loop muted playsinline>
-          <source src="阿妙與貓.mp4" type="video/mp4">
-          您的瀏覽器不支援影片播放
-        </video>
-      </div>
-    </div>
+    <div class="hero-badge">📐 108 課綱數學素養 · 智慧讀題鷹架系統</div>
+    <h1>國小數學「讀題三部曲」導學門戶</h1>
+    <p>透過【背景語句 🌿】、【條件語句 🌟】與【核心問題 🎯】三色透視拆解，引導三至六年級學生化繁為簡，破除長題迷思！</p>
   </div>
 
   <div class="method-card">
@@ -438,8 +375,7 @@
   </div>
 
   <footer>
-    <p>© 國小數學讀題三部曲 (三、四、五、六年級) 互動導學門戶系統 | 基於 108 課綱設計 · 歡迎教學分享</p>
-    <p class="footer-author">資料整理者 © 2026 葉姿妙/三芝國小/新北市國民教育地方輔導團學習共同體分團</p>
+    <p>© 國小數學讀題三部曲 (三、四、五、六年級) 互動導學門戶系統  |  基於 108 課綱設計 · 歡迎教學分享與轉載</p>
   </footer>
 
 </body>
